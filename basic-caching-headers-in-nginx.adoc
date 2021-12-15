@@ -1,0 +1,55 @@
+= Basic caching headers in nginx
+2020-01-05
+:tags: nginx, en, public
+
+To add basic caching headers for different filetypes, add an `expires` directive to your nginx config file, like this:
+
+----
+# Expires map
+map $sent_http_content_type $expires {
+    default                    off;
+    text/html                  epoch;
+    text/css                   max;
+    application/javascript     max;
+    ~image/                    max;
+    ~font                      max;
+}
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    expires $expires;
+    ...
+----
+
+`off` means no caching headers.
+
+`epoch` is no caching, ask the website itself.
+
+`max` is the maximum, cache as long as you can.
+
+A `~` in the mimetype indicates a regular expression.
+
+== Fonts
+
+It could be that this does not work right away for fonts, as nginx defaults to the `application/octet-stream` mimetype for those filetypes. To fix this, add these lines to the `/etc/nginx/mime.types` configfile:
+
+----
+font/ttf                      ttf;
+font/opentype                 otf;
+application/font-woff         woff;
+----
+
+Don't forget to add the first two to the list of gzipped mimetypes, the last is already a compressed format:
+
+----
+gzip_types text/plain text/css ... font/ttf font/opentype;
+----
+
+In `/etc/nginx/nginx.conf` (on Debian).
+
+== Sources
+
+* https://www.digitalocean.com/community/tutorials/how-to-implement-browser-caching-with-nginx-s-header-module-on-centos-7[https://www.digitalocean.com/community/tutorials/how-to-implement-browser-caching-with-nginx-s-header-module-on-centos-7]
+* http://drawingablank.me/blog/font-mime-types-in-nginx.html[http://drawingablank.me/blog/font-mime-types-in-nginx.html]
