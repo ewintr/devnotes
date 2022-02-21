@@ -45,7 +45,6 @@ userPassword:: e1NTSEF9ZGdKR1g1YTBKQ2twZkZLY1J5cHB0LzYwZmMwVWNReW4=
 
 LDAP does not really use the term 'authentication'. Instead one speaks of 'binding' a user. This binding is done to a BindDN, the distinguished name of a branch in the tree. Subsequent requests will be performed in the scope of that branch. That is, this user will only be able to 'see' the subbranches and leave nodes of this BindDN.
 
-
 == Trying it out on the command line
 
 LDAP servers require some work to setup. For the purposes of just testing things out, there are free online servers that kind people have set up and maintain. But a better solution is to find a good Docker image and run things on your local machine. The public servers will not let you modify data, for obvious reasons. The `osixia/openldap` worked for me:
@@ -62,15 +61,11 @@ This image has a minimal set of data in it. Let's see what it contains by runnin
 $ ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin
 ----
 
-`-x` to use simple authentication and no SASL
-
-`-H ldap://localhost` to point the program to the uri of our server
-
-`-b` specifies the scope, the branch under which we want to search
-
-`-D` the bindDN
-
-`-w admin` use `admin` as password
+* `-x` to use simple authentication and no SASL
+* `-H ldap://localhost` to point the program to the uri of our server
+* `-b` specifies the scope, the branch under which we want to search
+* `-D` the bindDN
+* `-w admin` use `admin` as password
 
 The result should be something like this:
 

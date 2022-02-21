@@ -10,11 +10,9 @@ But with Khard I can put the address book to good use. Khard is a command line p
 address-book-cmd=khard email --parsable --search-in-source-files --remove-first-line %s
 ----
 
-`--parsable` lets it return a tab delimited line as required.
-
-`--search-in-source-files` makes it faster with large address books.
-
-`--remove-first-line` removes the "searching for..." line in the response. Appearantly this line is required for Mutt, but it is not for Aerc.
+* `--parsable` lets it return a tab delimited line as required.
+* `--search-in-source-files` makes it faster with large address books.
+* `--remove-first-line` removes the "searching for..." line in the response. Appearantly this line is required for Mutt, but it is not for Aerc.
 
 == Debian Buster
 

@@ -19,26 +19,20 @@ wmctrl -b add,demands_attention -r "Pomodoro"
 
 This runs a terminal timer that counts down to zero from a specified amount of minutes and then lets the window manager draw attention to it in it's native way. In default i3 this means the border turns red, as well as the workspace indicator in the status bar.
 
-`wmctrl` handles the part of drawing the attention. The trick here is to make sure that attention is drawn to the right window. This is done setting the window title of the active window, the one we run the script in, to something known beforehand. This way, we can find it back later at the end of the countdown:
-
-`-N "Pomodoro"` sets the title of the window to "Pomodoro".
-
-`-r :ACTIVE:` selects the currently active window.
+* `wmctrl` handles the part of drawing the attention. The trick here is to make sure that attention is drawn to the right window. This is done setting the window title of the active window, the one we run the script in, to something known beforehand. This way, we can find it back later at the end of the countdown:
+* `-N "Pomodoro"` sets the title of the window to "Pomodoro".
+* `-r :ACTIVE:` selects the currently active window.
 
 Then the timer `termdown` is started:
 
-`--no-figlet`: don't fill the terminal with large numbers that do the countdown. We want some time focused on our task, so we need as little distraction as possible.
-
-`--no-seconds`: for the same reason, don't show the seconds.
-
-`--no-window-title`: by default `termdown` also displays the time left in the window title. This is even more distraction, but also removes the title we just set. This option disables that.
+* `--no-figlet`: don't fill the terminal with large numbers that do the countdown. We want some time focused on our task, so we need as little distraction as possible.
+* `--no-seconds`: for the same reason, don't show the seconds.
+* `--no-window-title`: by default `termdown` also displays the time left in the window title. This is even more distraction, but also removes the title we just set. This option disables that.
 
 After the countdown, we let `wmctrl` draw the attention:
 
-`-b add,demands_attention` adds the property `demands_attention` to the window.
-
-`-r "Pomodoro"` selects the window that has "Pomodoro" as title. 
-
+* `-b add,demands_attention` adds the property `demands_attention` to the window.
+* `-r "Pomodoro"` selects the window that has "Pomodoro" as title. 
 
 == Sources
 

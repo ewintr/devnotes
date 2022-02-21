@@ -32,7 +32,6 @@ echo "Bringing back Mongo..."
 fg
 ----
 
-
 == Sources
 
 * https://stackoverflow.com/questions/690266/why-cant-i-use-job-control-in-a-bash-script[https://stackoverflow.com/questions/690266/why-cant-i-use-job-control-in-a-bash-script]
