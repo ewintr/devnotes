@@ -9,9 +9,9 @@ To add basic caching headers for different filetypes, add an `expires` directive
 map $sent_http_content_type $expires {
     default                    off;
     text/html                  epoch;
-    text/css                   max;
-    application/javascript     max;
-    ~image/                    max;
+    text/css                   30d;
+    application/javascript     30d;
+    ~image/                    30d;
     ~font                      max;
 }
 
@@ -27,6 +27,8 @@ server {
 
 `epoch` is no caching, ask the website itself.
 
+`30d` cache for 30 days.
+
 `max` is the maximum, cache as long as you can.
 
 A `~` in the mimetype indicates a regular expression.
@@ -38,7 +40,8 @@ It could be that this does not work right away for fonts, as nginx defaults to t
 ----
 font/ttf                      ttf;
 font/opentype                 otf;
-application/font-woff         woff;
+font/woff         						woff;
+font/woff2										woff2;
 ----
 
 Don't forget to add the first two to the list of gzipped mimetypes, the last is already a compressed format:
