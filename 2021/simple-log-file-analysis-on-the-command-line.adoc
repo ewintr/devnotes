@@ -20,7 +20,7 @@ The information is broken down into the following sections (click on them to jum
 * #sorting-counting-and-grouping[Sorting, counting and grouping]
 * #examples[Examples]
 
-_Note: later I discovered that the same techniques can be used for your webserver statistics too. Check https://erikwinter.nl/notes/2021/json-structured-logging-with-nginx/[this note] to see how you can get Nginx to produce the same kind of structured logging as is discussed here._
+_Note: later I discovered that the same techniques can be used for your webserver statistics too. Check https://ewintr.nl/devnotes/2021/json-structured-logging-with-nginx/[this note] to see how you can get Nginx to produce the same kind of structured logging as is discussed here._
 
 == General Principles
 

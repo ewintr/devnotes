@@ -2,7 +2,7 @@
 2021-03-24
 :tags: nginx, public, en, json
 
-After writing https://erikwinter.nl/articles/2021/simple-log-file-analysis-for-your-kubernetes-pods-on-the-command-line/[my tutorial on analysis of JSON structured logs on the command line] I realized I could apply the same solution for website statistics. If only I could make Nginx to log in the same format.
+After writing https://ewintr.nl/devnotes/2021/simple-log-file-analysis-for-your-kubernetes-pods-on-the-command-line/[my tutorial on analysis of JSON structured logs on the command line] I realized I could apply the same solution for website statistics. If only I could make Nginx to log in the same format.
 
 Web stats have always been cumbersome for some reason. Most people resort to a Javascript tracker, but that is a complex solution. It requires an online service that the tracker can report to and it requires Javascript on the client side, which is not always available. Not to mention the privacy issues, performance drain, security concerns and all other forms of morally questionable misery that the advertising industry dumps on everyones everyday internet experience. 
 
