@@ -40,7 +40,7 @@ font/woff            woff;
 font/woff2           woff2;
 ----
 
-Don't forget to add the first two to the list of gzipped mimetypes, the last two already compression baked into the format:
+Don't forget to add the first two to the list of gzipped mimetypes, the last two already have compression baked into the format:
 
 ----
 gzip_types text/plain text/css ... font/ttf font/opentype;
