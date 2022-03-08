@@ -15,14 +15,14 @@ BRANCH="master"
 
 while read oldrev newrev ref
 do
-    # only checking out the master (or whatever branch you would like to deploy)
-    if [[ $ref = refs/heads/$BRANCH ]];
-    then
-        echo "Ref $ref received. Deploying ${BRANCH} branch to production..."
-        git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f
-    else
-        echo "Ref $ref received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
-    fi
+  # only checking out the master (or whatever branch you would like to deploy)
+  if [[ $ref = refs/heads/$BRANCH ]];
+  then
+    echo "Ref $ref received. Deploying ${BRANCH} branch to production..."
+    git --work-tree=$TARGET --git-dir=$GIT_DIR checkout -f
+  else
+    echo "Ref $ref received. Doing nothing: only the ${BRANCH} branch may be deployed on this server."
+  fi
 done
 ----
 
@@ -44,14 +44,14 @@ Whenever automations become more complicated, it is wise to put them in a separa
 
 while read oldrev newrev ref
 do
-	if [[ $ref = refs/heads/master ]];
-	then
-		echo "deploying to production from post-receive hook..."
-		/path/to/deploy-prod.sh
-	else
+  if [[ $ref = refs/heads/master ]];
+  then
+    echo "deploying to production from post-receive hook..."
+    /path/to/deploy-prod.sh
+  else
     echo "deploying test from post-receive hook..."
-		/path/to/deploy-test.sh'
-	fi
+    /path/to/deploy-test.sh'
+  fi
 done
 ----
 
